@@ -1,0 +1,117 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-Application</title>
+
+    <style>
+       .main{
+           text-align: left;
+           background-color: rgb(211, 230, 238);  
+           border: 2px solid black;
+           border-radius: 4px;
+
+        }
+        .form{
+            text-align: left;             
+        }
+        p{
+            font-family: Bell MT;
+            color:black;
+           
+        }
+        button{
+            font-family: Bell MT;
+            background-color: rgb(235, 233, 116);
+            border-radius: 5px;
+        }
+        input{
+            width: 360px;
+            height: 46px;
+            border-radius: 5px;
+            border: 1px solid black;  
+            font-family: Bell MT; 
+            font-size: 16px;    
+          
+        }
+        .mylist{
+            width: 360px;
+            height: 360px;
+            border: 1px solid black;
+            border-radius: 5px;
+            text-align: left;
+            background-color:white;
+            text-align: left;
+            
+
+        }
+        h1{
+            font-family: Vladimir Script;
+            font-size: 40px;
+            color: rgb(44, 28, 11);
+        }
+        h4{
+            font-family: Bell MT;
+            color: red;
+            font-size: 14px;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class ="main">
+        <h1>-Welcome to my to do App-</h1>
+        <p>This application makes a list of things that one needs to get done.</p>
+        <h4>NB: Click on the specific list to mark as done before removing!!!</h4>
+        <br></br>
+        <div class = "form">
+            <input type = "text" id = "input" placeholder="Write list here and add.....">   
+            <button id = "add">Add</button>
+            <button id="remove">Remove</button>
+        </div>
+            <div class ="mylist">
+                <ol id = "list">  
+                </ol> 
+            </div>          
+    </div>
+
+<script>
+    //Declare varibles -DOM elements
+    let list = document.getElementById("list");
+    let input = document.getElementById("input");
+    let add = document.getElementById("add");
+    let remove = document.getElementById("remove");
+    let count = 0;
+
+    let addList = function(){// Functions to add list from user input
+        count =+ 1;
+
+        let paragraph = document.createElement("p");
+        paragraph.innerText=input.value;
+        input.value="";
+        list.appendChild(paragraph);
+
+            let mark = function(){//Function to mark list before removing (deleting)
+            paragraph.style.textDecoration="line-through";
+
+                    let RemoveList = function(){//Function to remove list when marked 
+
+                            list.removeChild(paragraph)
+                    
+            }
+            remove.addEventListener("click",RemoveList);//Event listener for the remove button
+            
+          
+        }
+        paragraph.addEventListener("click",mark);//Event listener to select from the list
+       
+
+    }
+  
+    add.addEventListener("click",addList);//Event listener for the add button
+    
+</script>   
+</body>
+</html>
